@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Broadcaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 0; padding: 16px; }
+    video, canvas, img { width: 360px; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .stats { font-size: 14px; color: #333; }
+  </style>
+</head>
+<body>
+  <h1>Broadcaster (processed stream)</h1>
+  <div class="row">
+    <span id="roomLabel"></span>
+    <label>Interval (ms): <input id="interval" type="number" value="300" style="width:80px;"></label>
+    <label>JPEG q: <input id="quality" type="number" min="0" max="1" step="0.1" value="0.6" style="width:60px;"></label>
+    <button id="startBtn">Start Broadcast</button>
+    <button id="stopBtn" disabled>Stop</button>
+  </div>
+
+  <div class="grid">
+    <div>
+      <h3>Raw Camera</h3>
+      <video id="video" autoplay playsinline muted></video>
+    </div>
+    <div>
+      <h3>Processed Preview (also sent to viewer)</h3>
+      <canvas id="displayCanvas"></canvas>
+      <div class="stats" id="meta"></div>
+      <div class="stats" id="error" style="color:#b00020;"></div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="broadcaster.js"></script>
+</body>
+</html>
