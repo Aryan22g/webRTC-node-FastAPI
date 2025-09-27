@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 0; padding: 16px; }
+    video { width: 640px; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <h1>Viewer</h1>
+  <div class="row">
+    <span id="roomLabel"></span>
+  </div>
+  <video id="remote" autoplay playsinline></video>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="viewer.js"></script>
+</body>
+</html>

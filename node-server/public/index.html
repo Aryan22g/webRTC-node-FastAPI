@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Browser-to-Browser CV Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; margin: 0; padding: 24px; }
+    a, button, input { font-size: 16px; }
+    .card { max-width: 720px; margin: 0 auto; padding: 16px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+    .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .muted { color: #555; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Browser → Node → FastAPI (CV) → Browser</h1>
+    <p class="muted">Choose a role and room ID. Open this page in two windows/tabs: one as Broadcaster, one as Viewer (same room).</p>
+    <div class="row">
+      <label>Room ID: <input id="roomId" placeholder="e.g. test123" value="room1"></label>
+      <a id="broadcaster" href="#">Open Broadcaster</a>
+      <a id="viewer" href="#">Open Viewer</a>
+    </div>
+  </div>
+  <script>
+    const room = document.getElementById('roomId');
+    const link = (el, path) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const r = encodeURIComponent(room.value || 'room1');
+        window.location.href = `${path}?room=${r}`;
+      });
+    };
+    link(document.getElementById('broadcaster'), '/broadcaster.html');
+    link(document.getElementById('viewer'), '/viewer.html');
+  </script>
+</body>
+</html>
