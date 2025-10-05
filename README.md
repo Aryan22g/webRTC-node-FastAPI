@@ -1,6 +1,6 @@
 # Browser-to-Browser Streaming with Node (signaling) + FastAPI (CV)
 
-This extends the earlier demo: now the **Broadcaster** sends a processed (canvas) stream via **WebRTC** to a **Viewer** in another browser window/tab.
+The **Broadcaster** sends a processed (canvas) stream via **WebRTC** to a **Viewer** in another browser window/tab.
 
 ## Structure
 - `node-server/` – Express + Socket.IO for static hosting, FastAPI proxying (for frames), and **WebRTC signaling**.
